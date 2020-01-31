@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
+
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <div class="container">
+            <!-- Example row of columns -->
+
+
+
+            <h:form id="frm_MonthYearUpload"    enctype="multipart/form-data"  prependId="false" >
+                <div class="row">
+                   
+                   
+                           
+                   
+                       <div class="col-md-3">
+                           <div class="form-group">
+                                <p> <h:messages id="messages"    style="color: red"     /></p>
+                        
+                           </div></div>
+                            <div class="col-md-2">
+                           <div class="form-group">   
+                         
+                         
+                               <h:inputText value="#{MonthYearFrmUpload.tyear}" style="color: Yellow; background: Teal;"  styleClass="form-control   "  
+                                            maxlength="4"  required="true"    requiredMessage="รูปแบบการบันทึกปี พ.ศ. สี่หลักติดกัน"   title="เลือกปีของไฟล์"      validatorMessage="รูปแบบการบันทึกปี พ.ศ. สี่หลักติดกัน"    readonly="#{MonthYearFrmUpload.lock_number}"                                    
+                                       pt:placeholder="ปี พ.ศ. 4 หลัก"> <f:validateRegex pattern="[0-9]{4}" /> </h:inputText>
+                            <img width="20" height="10" src="resources/images/dot_clear.gif" />
+                           </div></div>
+                      
+                                   <div class="col-md-2">
+                           <div class="form-group">   
+                            <h:selectOneMenu    disabled="#{MonthYearFrmUpload.lock_number}"    style="color: Yellow; background: Teal;"  styleClass="form-control   "      
+                                                value="#{MonthYearFrmUpload.tmonth}">
+   			<f:selectItem itemValue="01" itemLabel="มกราคม" />
+   			<f:selectItem itemValue="02" itemLabel="กุมภาพันธ์" />
+   			<f:selectItem itemValue="03" itemLabel="มีนาคม" />
+                        <f:selectItem itemValue="04" itemLabel="เมษายน" />
+                        <f:selectItem itemValue="05" itemLabel="พฤษภาคม" />
+                        <f:selectItem itemValue="06" itemLabel="มิถุนายน" />
+                        <f:selectItem itemValue="07" itemLabel="กรกฏาคม" />
+                        <f:selectItem itemValue="08" itemLabel="สิงหาคม" />
+                        <f:selectItem itemValue="09" itemLabel="กันยายน" />
+                        <f:selectItem itemValue="10" itemLabel="ตุลาคม" />
+                        <f:selectItem itemValue="11" itemLabel="พฤศจิกายน" />
+                        <f:selectItem itemValue="12" itemLabel="ธันวาคม" />
+   		</h:selectOneMenu>
+                               
+                               
+                           </div></div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <h:commandButton action="#{MonthYearFrmUpload.find()}"     title="ค้นข้อมูลจากปี เดือนที่ต้องการ"   value="ค้นหา"    styleClass="btn btn-primary    "/>  
+                             <img width="20" height="10" src="resources/images/dot_clear.gif" />
+                          
+                       
+                         
+                        </div>               
+                    </div>       
+                </div>
+                <div class="row">
+                    <h:dataTable value="#{MonthYearFrmUpload.funerGen}" var="fg"    class="table table-striped table-responsive-md btn-table table-hover"  id="Upload"
+                         
+                                 >
+                        <f:facet name="caption">
+                            <h:outputText value="การดาวน์โหลดไฟล์สำหรับแบบฟอร์มประจำเดือน"/>
+
+                        </f:facet>
+
+                        <h:column headerClass="header " footerClass="footer"   >
+                            <f:facet name="header">
+                                <h:outputText value="ลำดับ"/>
+                            </f:facet>
+                            <h:outputText value="#{fg.num}" />
+                        </h:column>
+
+
+
+                        <h:column headerClass="header" footerClass="footer">
+                            <f:facet name="header">
+                                <h:outputText value="ประเภทไฟล์ดาวน์โหลด"/>
+                            </f:facet>
+                            <h:outputText value="#{fg.typeFile}" />
+                        </h:column>
+
+                        <h:column headerClass="header" footerClass="footer">
+                            <f:facet name="header">
+                                <h:outputText value="ชื่อไฟล์ดาวน์โหลด"/>
+                            </f:facet>
+                            <h:outputText value="#{fg.descFile}" />
+                        </h:column>
+                        <h:column headerClass="header" footerClass="footer">
+                            <f:facet name="header">
+                                <h:outputText value="ชื่อไฟล์"/>
+                            </f:facet>
+                            <h:outputText value="#{fg.fileName}" />
+                        </h:column>
+
+
+                        <h:column headerClass="header" footerClass="footer">
+                            <f:facet name="header">
+                                <h:outputText value="แบบฟอร์มสำหรับ"/>
+                            </f:facet>
+                            <h:outputText value="#{fg.fileForName}" />
+                        </h:column>
+                        <h:column headerClass="header" footerClass="footer">
+                            <f:facet name="header">
+                                <h:outputText value="ปี-เดือน"/>
+                            </f:facet>
+                            <h:outputText value="#{fg.yyyyMM}" />
+                        </h:column>
+                        
+                        
+                        
+                    
+
+                        <h:column headerClass="header" footerClass="footer">
+                            <f:facet name="header">
+                                <h:outputText value="ดาวน์โหลดไฟล์"/>
+                            </f:facet>
+                            
+                            <h:panelGroup rendered="#{!user.showLogin}" >
+                           <h:commandButton    action="#{MonthYearFrmUpload.downloadFile()}" image="resources/images/download.png"
+                                                disabled="#{MonthYearFrmUpload.permission_Download}"   rendered="#{MonthYearFrmUpload.row_zero}"       
+                                               >
+                                <f:param   name="TfileName" value="#{fg.fileName}"  ></f:param>
+                                
+                            </h:commandButton>
+                          </h:panelGroup>
+                         
+                        </h:column>
+
+                    </h:dataTable>
+                </div>
+                <div class="row">
+                    <h:outputText value=  "#{MonthYearFrmUpload.rnMax}"></h:outputText>
+
+                    <h:outputText value="#{MonthYearFrmUpload.pageStr}"></h:outputText>
+
+                    <div class="pagination">
+                        <h:commandLink action="#{MonthYearFrmUpload.recpos}"     title="หน้าแรก" >
+
+                            <img src="resources/images/first.png"  />
+                            <f:param name="rpos" value="F"/>
+                        </h:commandLink>
+
+                        <h:commandLink action="#{MonthYearFrmUpload.recpos}"  title="หน้าที่ผ่านมา"  >
+
+                            <h:graphicImage value="resources/images/previous.png"></h:graphicImage>
+                            <f:param name="rpos" value="P"/>
+                        </h:commandLink>
+
+                        <h:commandLink action="#{MonthYearFrmUpload.recpos}"   title="หน้าถัดไป" >
+
+                            <h:graphicImage value="resources/images/next.png"></h:graphicImage>
+                            <f:param name="rpos" value="N"/>
+                        </h:commandLink>
+
+                        <h:commandLink action="#{MonthYearFrmUpload.recpos}"    title="หน้าสุดท้าย" >
+                            <h:graphicImage value="resources/images/last.png"></h:graphicImage>
+
+                            <f:param name="rpos" value="L"/>
+                        </h:commandLink>
+                    </div>
+                    <h:outputText value="บรรทัดต่อหน้า 1-10"/>
+                    <h:inputText value="#{MonthYearFrmUpload.recordPerPage}" size="3"  class="left-text" >
+                        <f:validateLength maximum="2" minimum="1" />
+                        <f:convertNumber integerOnly="true"/>
+                        <f:validateLongRange maximum="10"  minimum="1"   />
+                    </h:inputText>
+
+
+
+                </div>
+            </h:form>
+
+
+
+        </div>
+        <hr/>
+
+    </ui:composition>
+</html>

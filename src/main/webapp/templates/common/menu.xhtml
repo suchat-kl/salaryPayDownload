@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>     
+           
+
+
+
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="active"><a href="index.xhtml">หน้าแรก</a></li>
+
+                        <li ><a href="http://app.doh.go.th/dp" target="_blank">หักหนี้(Net)</a></li>
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                รวมหักหนี้
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="http://172.16.1.182/dp"  target="_blank" >หนี้1</a>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="http://172.16.1.232/dp"  target="_blank" >หนี้2</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="http://172.16.1.233/dp"  target="_blank" >หนี้3</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="http://172.16.1.11:8080/dp"  target="_blank" >หนี้4</a>
+
+                            </div>                          
+                        </li>
+                        <li ><a href="http://app.doh.go.th/slip" target="_blank">สลิป(Net)</a></li>
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                รวมสลิป
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="http://172.16.1.232/slip"  target="_blank" >สลิป1</a>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="http://172.16.1.233/slip" target="_blank">สลิป2</a>
+                            </div>                          
+                        </li>
+                        <h:panelGroup rendered="#{!user.showLogin}" >  
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    รายการจ่ายเงิน
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="salaryPayDetail.xhtml">รายละเอียดการจ่ายเงิน</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="salaryPayDetail_Tax.xhtml"   >รายการภาษีประจำปี</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="salaryPayDetail_Tax_total.xhtml">รายการภาษีประจำปีรวมข้าราชการ ลูกจ้างประจำ</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="UploadForm.xhtml"   >นำเข้าไฟล์(รายละเอียดการจ่ายเงิน/ภาษีประจำปี)</a>        
+                                </div>                          
+                            </li>
+                        </h:panelGroup>   
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                งานฌาปนกิจสงเคราะห์
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="http://app.doh.go.th:8088/Funeral/"  target="_blank">ดาวน์โหลดไฟล์</a>
+
+                                <div class="dropdown-divider"></div>
+
+                                <a class="dropdown-item" href="http://hr-app:7777/DohHrFfd/common/Login"  target="_blank">ระบบฌาปนกิจสงเคราะห์</a>
+
+                            </div>                          
+                        </li>   
+
+
+
+
+                        <h:panelGroup rendered="#{!user.showLogin}" >
+                            <li ><a href="changePassword.xhtml">เปลี่ยนรหัสผ่าน</a></li>
+                        </h:panelGroup>
+                        <li ><a href="news.xhtml">ข่าวสาร</a></li>
+                    </ul>
+                    <h:form id="funeralForm" styleClass="form-horizontal  navbar-form navbar-right   navbar-light bg-light  form-inline my-2 my-lg-0">
+                        <h:panelGroup rendered="#{!user.showLogin}" >
+                            <h:outputText value="#{user.username_all}" styleClass="form-control "   
+                                          style="color: blue"     title="#{user.permission_title}"     
+                                          />
+                            <img width="2" height="10" src="resources/images/dot_clear.gif" />
+                            <h:commandButton value="จบการทำงาน" action="#{user.logout}" styleClass="btn btn-primary left-text " />
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{user.showLogin}">
+                            <div class="form-group">
+
+
+                                <h:inputText value="#{user.userName}" styleClass="form-control "   id="username" 
+                                             title="ชื่อผู้ใช้งาน" required="true" requiredMessage="ต้องบันทึกชื่อผู้ใช้" validatorMessage="รูปแบบการบันทึกชื่อผู้ใช้งานในระบบ"
+                                             pt:placeholder="ชื่อผู้ใช้งาน">
+
+
+                                </h:inputText>
+
+
+
+
+                            </div>
+                            <img width="20" height="10" src="resources/images/dot_clear.gif" />
+                            <div class="form-group">
+
+                                <h:inputSecret value="#{user.password}" styleClass="form-control left-text"    id="password"
+                                               title="รหัสผ่าน"   required="true" requiredMessage="ต้องบันทึกรหัสผ่าน" 
+                                               validatorMessage="รูปแบบการบันทึกรหัสผ่าน"
+                                               pt:placeholder="รหัสผ่าน"> </h:inputSecret>
+
+
+                            </div>
+                            <img width="20" height="10" src="resources/images/dot_clear.gif" />
+                            <h:commandButton value="เข้าระบบ" action="#{user.validate()}" styleClass="btn btn-primary "    />
+
+                        </h:panelGroup>
+
+                    </h:form>
+                </div><!--/.navbar-collapse -->
+            </div>
+        </nav>
+    </ui:composition>
+</html>

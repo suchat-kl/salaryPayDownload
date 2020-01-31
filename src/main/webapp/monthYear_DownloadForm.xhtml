@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      	xmlns:a="http://xmlns.jcp.org/jsf/facelets"	
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <ui:composition
+        template="/templates/layout/main-layout.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+
+        <ui:define name="head">
+            <title>การดาวน์โหลดไฟล์เอกสารฌาปนกิจสงเคราะห์สำหรับเอกสารประจำเดือน</title>
+            <!-- Custom styles for this template -->                  
+        </ui:define>
+        <ui:define name="menu">
+            <ui:include src="/templates/common/menu.xhtml" />
+        </ui:define>
+     
+        <ui:define name="content">
+            <ui:include src="/content_MonthYearDownloadFile.xhtml" />
+        </ui:define>
+        <ui:define name="footer">
+             <ui:include src="/templates/common/footer.xhtml" />
+        </ui:define>
+    </ui:composition>
+</html>

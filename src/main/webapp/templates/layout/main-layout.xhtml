@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <h:head>
+
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp;key=AIzaSyDh90uQbRpBwXwBie-x7R--ulEZTeF9d10"></script>
+        <ui:insert name="head"/>
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon.png"/>
+        <h:outputStylesheet library="webjars" name="bootstrap/3.4.1/css/bootstrap.min-jsf.css" />
+        <h:outputStylesheet library="webjars" name="bootstrap/3.4.1/css/bootstrap-theme.min-jsf.css" />
+        <h:outputStylesheet library="webjars" name="font-awesome/4.5.0/css/font-awesome.min-jsf.css" />
+        <h:outputStylesheet name="css/style.css" />
+        <h:outputStylesheet name="css/starter-template.css"/>
+     
+
+        <SCRIPT type="text/javascript">
+
+            window.history.forward();
+
+            function noBack() {
+                window.history.forward();
+            }
+
+        </SCRIPT>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+        <!-- DatePicker JavaScript & CSS -->
+        <!--
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js" />
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        <h:outputScript library="js" name="formatDatePicker.js" />
+        -->
+
+        <style type="text/css">
+            .col-xs-updated {        
+                width: 92% !important;
+            }
+        </style>
+    </h:head>
+    <h:body onload="noBack();
+                if (event.persisted)
+                    noBack();"    
+            onunload="">
+        <ui:insert name="menu"/>
+
+        <div class="container">   
+            <ui:insert name="header"/>
+            <ui:insert name="content"/>
+            <ui:insert name="footer"/>
+        </div>
+
+        <!-- load js at bottom for faster loading-->
+        <h:outputScript library="webjars" name="jquery/2.2.4/jquery.min.js"/>
+        <h:outputScript library="webjars" name="bootstrap/3.4.1/js/bootstrap.min.js" />
+     
+
+
+    </h:body>
+</html>

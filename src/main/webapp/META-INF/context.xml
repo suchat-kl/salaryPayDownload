@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/sal">
+            <Resource auth="Container" autoReconnect="true" 
+            maxActive="500" maxIdle="10" maxWait="50000" name="jdbc/salary" password="l;ylfuxitgmLwmp" 
+            type="javax.sql.DataSource" username="salary" 
+            driverClassName="com.mysql.cj.jdbc.Driver"
+url="jdbc:mysql://172.16.1.183:3306/salary?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"
+            validationQuery="SELECT SYSDATE(); "/>
+</Context>

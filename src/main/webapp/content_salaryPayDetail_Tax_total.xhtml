@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <div class="container">
+            <!-- Example row of columns -->
+
+
+
+            <h:form id="frm_genUpload"    enctype="multipart/form-data"  prependId="false" >
+              <br/><br/><br/><br/><br/>
+                <div class="row">
+                    <h:dataTable value="#{sal.detailFile2}" var="fg"    class="table table-striped table-responsive-md btn-table table-hover"  id="salTable"  >
+                        <f:facet name="caption">
+                        <h:outputText value="การดาวน์โหลดไฟล์ภาษีประจำปี"/>
+ 
+                        </f:facet>
+
+                        <h:column headerClass="header " footerClass="footer"   >
+                            <f:facet name="header">
+                                <h:outputText value="ลำดับ"/>
+                            </f:facet>
+                            <h:outputText value="#{fg.rowNum}" />
+                        </h:column>
+
+
+
+                        <h:column headerClass="header" footerClass="footer">
+                            <f:facet name="header">
+                                <h:outputText value="หน่วยงาน"/>
+                            </f:facet>
+                            <h:outputText value="#{fg.name}" />
+                        </h:column>
+
+                        <h:column headerClass="header" footerClass="footer">
+                            <f:facet name="header">
+                                <h:outputText value="ผู้ใช้งาน"/>
+                            </f:facet>
+                            <h:outputText value="#{fg.userName}" />
+                        </h:column>
+                        <h:column headerClass="header" footerClass="footer">
+                            <f:facet name="header">
+                                <h:outputText value="ชื่อไฟล์ดาวน์โหลด"/>
+                            </f:facet>
+                            <a href="tax/#{fg.fileName}" >
+                            <h:outputText value="#{fg.fileName}" />
+                            </a>
+                        </h:column>
+
+
+                        <h:column headerClass="header" footerClass="footer">
+                            <f:facet name="header">
+                                <h:outputText value="อีเมลล์"/>
+                            </f:facet>
+                            <h:outputText value="#{fg.email}" />
+                        </h:column>
+                        <h:column headerClass="header" footerClass="footer">
+                            <f:facet name="header">
+                                <h:outputText value="ดาวน์โหลดไฟล์"/>
+                            </f:facet>
+                            
+                            
+                             <h:commandLink action="#{sal.downloadFile()}"             >        <img  src="resources/images/icons8-zip-64.png" />  
+                                <f:param value="#{fg.fileName}" name="TfileName"  > </f:param>
+                                <f:param value="tax" name="path"  > </f:param>
+                            </h:commandLink>
+       
+  </h:column>
+                 
+
+                    </h:dataTable>
+                </div>
+                <div class="row">
+                    <h:outputText id="t1" value=  "#{sal.rnMax}"></h:outputText>
+
+                    <h:outputText id="t2" value="#{sal.pageStr}"></h:outputText>
+
+                    <div class="pagination">
+                        <p:commandLink action="#{sal.recpos}"     title="หน้าแรก"   update="salTable t1 t2">
+
+                            <img src="resources/images/first.png"  />
+                            <f:param name="rpos" value="F"/>
+                        </p:commandLink>
+
+                        <p:commandLink action="#{sal.recpos}"  title="หน้าที่ผ่านมา"  update="salTable t1 t2" >
+
+                            <h:graphicImage value="resources/images/previous.png"></h:graphicImage>
+                            <f:param name="rpos" value="P"/>
+                        </p:commandLink>
+
+                        <p:commandLink action="#{sal.recpos}"   title="หน้าถัดไป" update="salTable t1 t2" >
+
+                            <h:graphicImage value="resources/images/next.png"></h:graphicImage>
+                            <f:param name="rpos" value="N"/>
+                        </p:commandLink>
+
+                        <p:commandLink action="#{sal.recpos}"    title="หน้าสุดท้าย"  update="salTable t1 t2">
+                            <h:graphicImage value="resources/images/last.png"></h:graphicImage>
+
+                            <f:param name="rpos" value="L"/>
+                        </p:commandLink>
+                    </div>
+                    <h:outputText value="บรรทัดต่อหน้า 1-10"/>
+                    <h:inputText value="#{sal.recordPerPage}" size="3"  class="left-text" >
+                        <f:validateLength maximum="2" minimum="1" />
+                        <f:convertNumber integerOnly="true"/>
+                        <f:validateLongRange maximum="10"  minimum="1"   />
+                    </h:inputText>
+
+
+
+                </div>
+            </h:form>
+
+
+
+        </div>
+        <hr/>
+
+    </ui:composition>
+</html>

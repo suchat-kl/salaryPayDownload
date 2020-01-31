@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
+
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <div class="container">
+            <!-- Example row of columns -->
+
+
+
+            <h:form id="frm_MonthYearUpload"    enctype="multipart/form-data"  prependId="false" >
+            
+                <br/><br/><br/><br/><br/>
+                <div class="row"  >
+                     <h:outputText value="นำเข้าไฟล์(รายละเอียดการจ่ายเงิน/ภาษีประจำปี)"/>
+                </div>
+                <div class="row">
+                
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <h:outputText value="เลือก *.zip ไฟล์"/>
+                            <h:inputFile value="#{sal.uploadedFile}"  style="color: Yellow; background: Teal;"  styleClass="form-control   "   >   
+                                <f:validator validatorId="fileUploadValidator"/>
+                            </h:inputFile>
+                            <br/>
+                            <h:outputText value="ข้อความ--#{sal.message}" ></h:outputText>
+                            <p> <h:messages id="messages"  style="color: red"  /></p>
+                        </div>               
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <h:outputText value="แบบฟอร์มสำหรับ"/>
+
+                            <h:selectOneListbox value="#{sal.tfileFor}"     style="color: Yellow; background: Teal;"  styleClass="form-control   ">
+                                <f:selectItem itemValue="1" itemLabel="รายละเอียดการจ่ายเงิน"    />
+                                <f:selectItem itemValue="2" itemLabel="ภาษีประจำปี" />
+                                
+                            </h:selectOneListbox>
+
+                        </div>               
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            
+                          <br/>
+                       
+                         
+                          
+                          <h:commandButton  action="#{sal.saveFile()}" styleClass="btn btn-primary " value="บันทึก" />
+                              
+                          
+                         
+                                                  
+                         
+                        </div>               
+                    </div>       
+                </div>
+             
+                
+                
+            </h:form>
+
+
+
+        </div>
+        <hr/>
+
+    </ui:composition>
+</html>

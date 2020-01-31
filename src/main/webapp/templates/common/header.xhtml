@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+    >
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                 <div class="row">
+        <div class="col-md-12">
+
+            <h:panelGroup rendered="#{user.showLogin}" >            
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <img src="" class="rounded mr-2" alt=""/>
+   
+    <strong class="mr-auto">  <h:outputText value="#{user.er1}"   style="color: red"   />  </strong>
+    <small><h:outputText value="#{user.er2}"  style="color: red"    /> </small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="toast-body">
+    
+      <h:message for="username" style="color: red"  /> <img width="20" height="10" src="resources/images/dot_clear.gif" />
+                          <h:message for="password"   style="color: red" />
+                          
+                          <h:outputText value="#{user.msg_login}"  style="color: red"    />
+                          
+  </div>
+</div>
+              
+  </h:panelGroup>     
+            <center>         <img src="resources/images/pic_doh.png" class="  rounded float-left" alt="ศูนย์วิจัยข้าวสะเมิง" /></center>
+                <br/>
+        </div>
+                   
+                     
+                     
+                 </div>
+            </div>
+        </div>
+    </ui:composition>
+</html>
